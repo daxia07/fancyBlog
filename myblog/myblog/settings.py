@@ -36,6 +36,7 @@ ALLOWED_HOSTS = config['ALLOWED_HOSTS']
 INSTALLED_APPS = [
     # created
     'posts',
+    'frontend',
     # plugin
     'rest_framework',
     # django

@@ -1,0 +1,36 @@
+{
+  "name": "fancyBlog",
+  "version": "1.0.0",
+  "description": "This version uses APIs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development ./myblog/frontend/src/index.js --output ./myblog/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./myblog/frontend/src/index.js --output ./myblog/frontend/static/frontend/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daxia07/fancyBlog.git"
+  },
+  "keywords": [],
+  "author": "limingxia <limingxia07@gmail.com> (http://www.prawn-dumpling.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daxia07/fancyBlog/issues"
+  },
+  "homepage": "https://github.com/daxia07/fancyBlog#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}
