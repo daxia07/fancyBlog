@@ -65,3 +65,4 @@ typings/
 
 # idea
 /.idea
+!/myblog/frontend/static/frontend/debug.html

@@ -1,15 +1,24 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { getPosts } from "../../actions/posts";
+import { getPosts, deletePost } from "../../actions/posts";
+import moment from "moment";
+
 
 export class Posts extends Component {
+    constructor(props) {
+        // Do tests before loading
+        super(props);
+    }
+
     static propTypes = {
-        posts: PropTypes.array.isRequired
+        posts: PropTypes.array.isRequired,
+        getPosts: PropTypes.func.isRequired,
+        deletePost: PropTypes.func.isRequired
     };
 
+
     componentDidMount() {
-        console.log('Hi');
         this.props.getPosts();
     }
 
@@ -20,7 +29,6 @@ export class Posts extends Component {
                 <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Title</th>
                             <th>Content</th>
                             <th>Date Posted</th>
@@ -32,9 +40,9 @@ export class Posts extends Component {
                         <tr key={post.id}>
                             <td>{post.title}</td>
                             <td>{post.content}</td>
-                            <td>{post.date_posted}</td>
+                            <td>{moment(post.date_posted).format('LLL')}</td>
                             <td>{post.author}</td>
-                            <td><button className="btn btn-danger btn-sm">Delete</button></td>
+                            <td><button className="btn btn-danger btn-sm" onClick={this.props.deletePost.bind(this, post.id)}>Delete</button></td>
                         </tr>
                     ))}
                     </tbody>
@@ -48,4 +56,4 @@ const mapStateToProps = state => ({
     posts: state.postsReducer.posts
 });
 
-export default connect(mapStateToProps, { getPosts })(Posts);
+export default connect(mapStateToProps, { getPosts, deletePost})(Posts);

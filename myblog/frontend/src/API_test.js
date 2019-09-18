@@ -31,7 +31,7 @@ const getPosts = ()  => {
     //     "content": "Fresh New Post!ADJUSTED2 via patch API"
     // }).then(res => console.log(res.data)).catch(err => console.log(err));
 
-    // myAPI.endpoints.posts.delete({id: 6}).then(res => console.log(res)).catch(err => console.log(err));
+    myAPI.endpoints.posts.delete({id: 7}).then(res => console.log(res)).catch(err => console.log(err));
 };
 
 getPosts();
