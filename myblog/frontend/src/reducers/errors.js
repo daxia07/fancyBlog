@@ -8,7 +8,6 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-    console.log(state);
     switch (action.type) {
         case GET_ERRORS:
             return {
@@ -20,5 +19,4 @@ export default function (state = initialState, action) {
         default:
             return state;
     }
-
 }
