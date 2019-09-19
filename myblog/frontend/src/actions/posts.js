@@ -8,11 +8,24 @@ myAPI.createEntity({ name : 'posts' });
 
 export const getPosts = () => dispatch => {
     myAPI.endpoints.posts.getAll('').then(res => {
+        console.log('get posts', res);
         dispatch({
             type: GET_POSTS,
             payload: res.data
         })
-    }).catch(err => console.log(err))
+    }).catch(err => {
+        const errors = {
+            msg: err.response.data,
+            status: err.response.status
+        };
+        dispatch({
+            type: GET_ERROR,
+            payload: errors
+        });
+        if (err.response.status === 403) {
+            // TODO: dispatch login action
+        }
+    })
 };
 
 export const deletePost = id => dispatch => {

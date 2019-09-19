@@ -13,7 +13,7 @@ class Post(models.Model):
     content = models.TextField()
     # content = RichTextUploadingField(config_name='default')
     date_posted = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
     # val_obj = GenericRelation(Comment, object_id_field='val_id', related_query_name='post')
 
     def __str__(self):

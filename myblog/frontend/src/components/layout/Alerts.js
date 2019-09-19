@@ -12,10 +12,13 @@ class Alerts extends Component {
     componentDidUpdate(prevProps) {
         console.log('did update',this.props);
         const {error, alert, message} = this.props;
+        // alert input error
         if (error !== prevProps.error) {
             if (error.msg.title) alert.error(`Title: ${error.msg.title.join()}`);
             if (error.msg.content) alert.error(`Content: ${error.msg.content.join()}`);
+            if (error.msg.detail) alert.error(`Forbidden: ${error.msg.detail}`);
         }
+        // alert message
         if (message !== prevProps.message) {
             alert.show(message)
         }

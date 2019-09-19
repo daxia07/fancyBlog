@@ -24,7 +24,7 @@ class Form extends Component {
         e.preventDefault();
         const {title, content} = this.state;
         const date_posted = new Date;
-        const post = {title, content, date_posted, author:1};
+        const post = {title, content, date_posted};
         this.props.createPost(post);
         this.setState({
            title: '',
@@ -48,7 +48,7 @@ class Form extends Component {
                         <input className="form-control" type="text" name="content" onChange={this.onChange} value={content}/>
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary">
+                        <button type="submit" className="btn btn-primary float-right">
                             Submit
                         </button>
                     </div>
