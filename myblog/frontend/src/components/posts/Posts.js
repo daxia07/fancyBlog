@@ -6,11 +6,6 @@ import moment from "moment";
 
 
 export class Posts extends Component {
-    constructor(props) {
-        // Do tests before loading
-        super(props);
-    }
-
     static propTypes = {
         posts: PropTypes.array.isRequired,
         getPosts: PropTypes.func.isRequired,

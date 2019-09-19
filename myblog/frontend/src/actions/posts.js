@@ -1,7 +1,7 @@
 import API from "../API";
 
 import config from '../config';
-import {GET_POSTS, CREATE_POST, DELETE_POST, PATCH_POST} from "./types";
+import {GET_POSTS, CREATE_POST, DELETE_POST, PATCH_POST, GET_ERRORS} from "./types";
 
 const myAPI = new API({url: config.url});
 myAPI.createEntity({ name : 'posts' });
@@ -30,5 +30,14 @@ export const createPost = post => dispatch => {
             type: CREATE_POST,
             payload: res.data
         })
-    }).catch(err => console.log(err));
+    }).catch(err => {
+        const errors = {
+            msg: err.response.data,
+            status: err.response.status
+        };
+        dispatch({
+            type: GET_ERRORS,
+            payload: errors
+        });
+    });
 };
