@@ -1,7 +1,7 @@
 import API from "../API";
 
 import config from '../config';
-import {GET_POSTS, CREATE_POST, DELETE_POST, PATCH_POST, GET_ERRORS} from "./types";
+import {GET_POSTS, CREATE_POST, DELETE_POST, PATCH_POST, GET_ERROR, SEND_MESSAGE} from "./types";
 
 const myAPI = new API({url: config.url});
 myAPI.createEntity({ name : 'posts' });
@@ -20,6 +20,10 @@ export const deletePost = id => dispatch => {
         dispatch({
             type: DELETE_POST,
             payload: id
+        });
+        dispatch({
+            type: SEND_MESSAGE,
+            payload: 'Post deleted!'
         })
     }).catch(err => console.log(err))
 };
@@ -29,6 +33,10 @@ export const createPost = post => dispatch => {
         dispatch({
             type: CREATE_POST,
             payload: res.data
+        });
+        dispatch({
+            type: SEND_MESSAGE,
+            payload: 'New post created!'
         })
     }).catch(err => {
         const errors = {
@@ -36,7 +44,7 @@ export const createPost = post => dispatch => {
             status: err.response.status
         };
         dispatch({
-            type: GET_ERRORS,
+            type: GET_ERROR,
             payload: errors
         });
     });

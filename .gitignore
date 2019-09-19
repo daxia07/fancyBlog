@@ -65,4 +65,6 @@ typings/
 
 # idea
 /.idea
-!/myblog/frontend/static/frontend/debug.html
+# static & debug template
+/myblog/frontend/static/frontend/debug.html
+/myblog/static/

@@ -5,15 +5,19 @@ import {withAlert} from "react-alert";
 
 class Alerts extends Component {
     static propTypes = {
-        error: PropType.object.isRequired
+        error: PropType.object.isRequired,
+        message: PropType.string.isRequired
     };
 
     componentDidUpdate(prevProps) {
         console.log('did update',this.props);
-        const {error, alert} = this.props;
+        const {error, alert, message} = this.props;
         if (error !== prevProps.error) {
             if (error.msg.title) alert.error(`Title: ${error.msg.title.join()}`);
             if (error.msg.content) alert.error(`Content: ${error.msg.content.join()}`);
+        }
+        if (message !== prevProps.message) {
+            alert.show(message)
         }
     }
 
@@ -23,7 +27,8 @@ class Alerts extends Component {
 }
 
 const mapStateToProps = state => ({
-    error: state.errorsReducer.errors
+    error: state.errorsReducer.errors,
+    message: state.messageReducer.message
 });
 
 export default connect(mapStateToProps)(withAlert()(Alerts));
