@@ -50,6 +50,12 @@ class API {
 
         endpoints.delete = ({ id }, config={}) => axios.delete(`${resourceURL}/${id}/`, config);
 
+        endpoints.login  = (auth, config={}) =>  axios.post(`${resourceURL}/`, auth, config);
+
+        endpoints.logout  = (auth, config={}) =>  axios.post(`${resourceURL}/`, auth, config);
+
+
+
         return endpoints
 
     }

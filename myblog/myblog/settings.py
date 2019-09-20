@@ -143,6 +143,12 @@ if DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
+REACT_APP_DIR = os.path.join(BASE_DIR, 'personal-website-front')
+
+STATICFILES_DIRS = [
+    os.path.join(REACT_APP_DIR, 'build', 'static'),
+]
+
 # Email Access
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # During development only
 EMAIL_HOST = 'smtp.gmail.com'
@@ -154,4 +160,8 @@ EMAIL_HOST_PASSWORD = config['GM_PASS']
 
 if DEBUG:
     DATABASES['default']['HOST'] = 'localhost'
+    MIDDLEWARE.append('myblog.middleware.dev_cors_middleware')
+
+
+
 

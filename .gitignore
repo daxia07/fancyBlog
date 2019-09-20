@@ -68,3 +68,4 @@ typings/
 # static & debug template
 /myblog/frontend/static/frontend/debug.html
 /myblog/static/
+/myblog/myblog/settings_local.py
