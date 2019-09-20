@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     # created
     'posts',
     'frontend',
+    'accounts',
     # plugin
     'rest_framework',
+    'knox',
     # django
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,6 +49,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'knox.auth.TokenAuthentication'
+    ]
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
