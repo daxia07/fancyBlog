@@ -35,9 +35,9 @@ ALLOWED_HOSTS = config['ALLOWED_HOSTS']
 
 INSTALLED_APPS = [
     # created
-    'posts',
-    'frontend',
-    'accounts',
+    'posts.apps.PostsConfig',
+    'frontend.apps.FrontendConfig',
+    'accounts.apps.AccountsConfig',
     # plugin
     'rest_framework',
     'knox',
@@ -161,6 +161,7 @@ EMAIL_HOST_PASSWORD = config['GM_PASS']
 if DEBUG:
     DATABASES['default']['HOST'] = 'localhost'
     MIDDLEWARE.append('myblog.middleware.dev_cors_middleware')
+    PDATA = r"/Users/daxia/Library/Application Support/Postgres/var-11"
 
 
 
