@@ -30,6 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = config['ALLOWED_HOSTS']
 
+if DEBUG:
+    CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -60,6 +62,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -160,7 +163,7 @@ EMAIL_HOST_PASSWORD = config['GM_PASS']
 
 if DEBUG:
     DATABASES['default']['HOST'] = 'localhost'
-    MIDDLEWARE.append('myblog.middleware.dev_cors_middleware')
+    # MIDDLEWARE.append('myblog.middleware.dev_cors_middleware')
     PDATA = r"/Users/daxia/Library/Application Support/Postgres/var-11"
 
 

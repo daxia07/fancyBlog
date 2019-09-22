@@ -6,8 +6,11 @@ def dev_cors_middleware(get_response):
 
     def middleware(request):
         response = get_response(request)
+        if request.META['HTTP_HOST'] == '127.0.0.1:8000':
+            response['Access-Control-Allow-Origin'] = 'http://localhost:8000'
+        elif request.META['HTTP_HOST'] == '127.0.0.1:3000':
+            response['Access-Control-Allow-Origin'] = 'http://localhost:3000'
 
-        response['Access-Control-Allow-Origin'] = 'http://localhost:3000'
         response['Access-Control-Allow-Methods'] = 'GET, POST, PUT, PATCH, OPTIONS, DELETE, HEAD'
         response['Access-Control-Allow-Headers'] = 'Content-Type, X-CSRFToken'
         response['Access-Control-Allow-Credentials'] = 'true'
