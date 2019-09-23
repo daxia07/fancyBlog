@@ -1,4 +1,3 @@
-from .models import Post
 from rest_framework import viewsets, permissions
 from .serializer import PostSerializer
 

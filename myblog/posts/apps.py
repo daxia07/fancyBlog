@@ -29,7 +29,7 @@ class PostsConfig(AppConfig):
                     comm_launch = ["postgres", "-D", settings.PDATA]
                     process = subprocess.Popen(comm_launch, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
                     print('database launched @PID: ', process.pid)
-
+                    time.sleep(1)
                 if check_db_not_running(comm):
                     print('not working')
                 else:

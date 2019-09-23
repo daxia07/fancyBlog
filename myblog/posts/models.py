@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.fields import GenericRelation
+# from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from django.utils import timezone
